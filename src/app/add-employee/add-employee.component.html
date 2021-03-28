@@ -1,1 +1,41 @@
-<p>add-employee works!</p>
+<div class="col-md-6">
+    <h2 class="text-center">Add Employee</h2>
+    <form>
+    <div class="form-group">
+        <label for="empId">Employee Id</label>
+        <input [(ngModel)]="user.empId" placeholder="Employee Id" name="Employee Id" class="form-control" id="employeeid">
+    </div>
+
+      <div class="form-group">
+        <label for="name">firstname:</label>
+        <input type="name" [(ngModel)]="user.firstname" placeholder="firstname" name="firstname" class="form-control" id="firstname">
+      </div>
+
+      <div class="form-group">
+        <label for="name">lastname:</label>
+        <input type="name" [(ngModel)]="user.lastname" placeholder="lastname" name="lastname" class="form-control" id="lastname">
+      </div>
+
+      <div class="form-group">
+        <label for="name">address:</label>
+        <input type="name" [(ngModel)]="user.address" placeholder="address" name="address" class="form-control" id="address">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Date Of Birth:</label>
+        <input ng-model="demoData.dob" name="dob" type="date" id="dob"required />
+      </div>
+
+      <div class="form-group">
+        <label for="name">mobile:</label>
+        <input type="name" [(ngModel)]="user.mobile" placeholder="mobile" name="mobile" class="form-control" id="mobile">
+      </div>
+
+      <div class="form-group">
+        <label for="designation">city:</label>
+        <input [(ngModel)]="user.city" placeholder="city" name="city" class="form-control" id="city">
+      </div>
+    
+      <button class="btn btn-success" (click)="createEmployee()">Create</button>
+    </form>
+    </div>
