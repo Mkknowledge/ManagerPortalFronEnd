@@ -7,7 +7,7 @@ export class Employee{
     public firstname:string,
     public lastname:string,
     public address:string,
-    public dob: Date,
+    public dob: string,
     public mobile:string,
     public city:string
   ) {}

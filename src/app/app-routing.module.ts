@@ -1,3 +1,4 @@
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
@@ -5,7 +6,8 @@ import { EmployeeComponent } from './employee/employee.component';
 
 const routes: Routes = [
 
-  {path: 'employees', component: EmployeeComponent}
+  {path: '', component: EmployeeComponent},
+  {path: 'addemployee', component: AddEmployeeComponent}
 
 ];
 

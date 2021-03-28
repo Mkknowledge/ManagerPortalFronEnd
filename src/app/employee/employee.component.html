@@ -1,14 +1,21 @@
-<table border="1">
-    <thead></thead>
-    <tr>
-      <th>empId</th>
-      <th>firstname</th>
-      </tr>
-    
-    <tbody>
-        <tr *ngFor="let employee of employees">
-            <td>{{employee.empId}}</td>
-            <td>{{employee.firstname}}</td>
-            </tr>
-    </tbody>
-      </table>
+<div class="col-md-6">
+        <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>EmpId</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.empId}}</td>
+                <td>{{employee.firstname}}</td>
+                <td>{{employee.lastname}}</td>
+                <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td>
+                </tr>
+        </tbody>
+          </table>
+      
+        </div>
+        
