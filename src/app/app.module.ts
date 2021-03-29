@@ -13,6 +13,7 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     UpdateEmployeeComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
