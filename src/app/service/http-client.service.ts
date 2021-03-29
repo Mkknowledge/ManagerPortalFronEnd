@@ -14,6 +14,19 @@ export class Employee{
   ) {}
 }
 
+export class Manager{
+  constructor(
+    public email:string,
+    public username:string,
+    public firstname:string,
+    public lastname:string,
+    public password:string,
+    public address:string,
+    public dob: string,
+    public company:string
+  ) {}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +44,10 @@ export class HttpClientService {
     let password:"123123123";
     const headers = new HttpHeaders({Authentication : 'Basic '+btoa(username+":"+password)});
     return this.httpClient.get('http://localhost:8080/',{headers});
+  }
+
+  public createManager(manager) {
+    return this.httpClient.post<Manager>("http://localhost:8080/secure/manager/add", manager);
   }
 
   public getEmployees() {

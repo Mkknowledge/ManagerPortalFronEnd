@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<div class="background-wrap">
+    <div class="background"></div>
+  </div>
+ 
+  <form id="accesspanel" style="height: 80%;" action="">
+    <h1 id="litheader">Sign Up</h1>
+    <div class="inset">
+      <p>
+        <input type="text" name="email" [(ngModel)]="manager.email" id="email" placeholder="email">
+      </p>
+      <p>
+        <input type="text" name="username" [(ngModel)]="manager.username" id="username" placeholder="username">
+      </p>
+      <p>
+        <input type="text" name="firstname" [(ngModel)]="manager.firstname" id="firstname" placeholder="firstName">
+      </p>
+      <p>
+        <input type="text" name="lastname" [(ngModel)]="manager.lastname" id="lastname" placeholder="lastName">
+      </p>
+      <p>
+        <input type="password" name="password" [(ngModel)]="
+        password_test" id="password" placeholder="password">
+      </p>
+      <p>
+        <input type="text" name="address" [(ngModel)]="manager.address" id="address" placeholder="address">
+      </p>
+      <p>
+        <input type="date" name="dob" [(ngModel)]="manager.dob" id="dob" placeholder="Date Of Birth">
+      </p>
+      <p>
+        <input type="text" name="company" [(ngModel)]="manager.company" id="company" placeholder="company">
+      </p>
+    </div>
+    <p class="p-container">
+      <input type="submit" name="SignUp" id="go" value="SignUp" (click)="createManager()">
+    </p>
+  </form>

@@ -5,6 +5,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'addemployee', component: AddEmployeeComponent},
   {path: 'updateemployee', component: UpdateEmployeeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'signup', component: SignupComponent}
 
 ];
 
