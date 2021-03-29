@@ -9,6 +9,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FooterComponent } from './footer/footer.component';
     EmployeeComponent,
     AddEmployeeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UpdateEmployeeComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,14 @@ export class HttpClientService {
     return this.httpClient.get<Employee[]>('http://localhost:8080/employees');
   }
 
+  public getEmployee(employee) {
+    return this.httpClient.get<Employee>("http://localhost:8080/employees" + "/"+ employee.empId);
+  }
+
+  public updateEmployee(employee) {
+    return this.httpClient.put<Employee>("http://localhost:8080/employees" + "/"+ employee.empId, {});
+  } 
+
   public deleteEmployee(employee) {
     return this.httpClient.delete<Employee>("http://localhost:8080/employees" + "/"+ employee.empId);
   }

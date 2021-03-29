@@ -1,5 +1,6 @@
 import { HttpClientService, Employee } from './../service/http-client.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -9,14 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeComponent implements OnInit {
 
   employees:Employee[];
-
-  constructor(private httpClientService:HttpClientService) { }
+  constructor(private httpClientService:HttpClientService, private router: Router) { }
 
   ngOnInit() {
     this.httpClientService.getEmployees().subscribe(
      response =>{this.employees = response;}
     );
   }
+
+  editUser(emp: Employee): void {
+    window.localStorage.removeItem("editUserId");
+    window.localStorage.setItem("editUserId", emp.empId.toString());
+    this.router.navigate(['/updateemployee']);
+  };
 
   deleteEmployee(employee: Employee): void {
     this.httpClientService.deleteEmployee(employee)
