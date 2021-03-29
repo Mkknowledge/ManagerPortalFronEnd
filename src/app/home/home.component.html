@@ -1,1 +1,25 @@
-<p>home works!</p>
+<button class="btn btn-success" (click)="getUsers()">View</button>
+
+<div class="col-md-6">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Manager ID</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <!-- <td><button class="btn btn-success" (click)="editUser(employee)"> Update Employee</button></td> -->
+            <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td>
+            </tr>
+    </tbody>
+      </table>
+  
+    </div>
+    
+

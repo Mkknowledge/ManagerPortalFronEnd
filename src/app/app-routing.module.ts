@@ -3,13 +3,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
 
-  {path: '', component: EmployeeComponent},
+  {path: '', redirectTo: 'login',pathMatch:'full'},
+  {path: 'viewemployee', component: EmployeeComponent},
   {path: 'addemployee', component: AddEmployeeComponent},
-  {path: 'updateemployee', component: UpdateEmployeeComponent}
+  {path: 'updateemployee', component: UpdateEmployeeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent}
 
 ];
 

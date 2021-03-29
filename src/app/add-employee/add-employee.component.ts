@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 })
 export class AddEmployeeComponent implements OnInit {
 
-  user: Employee = new Employee(Number(),"","","","","","","","");
+  user: Employee = new Employee(Number(),"","","","","","","");
 
   role = [
     { id: 1, name: 'Manager' },
@@ -34,7 +34,6 @@ export class AddEmployeeComponent implements OnInit {
   createEmployee(): void {
     this.httpClientService.createEmployee(this.user)
         .subscribe( data => {
-          alert(data.role);
           alert("Employee created successfully.");
         });
 

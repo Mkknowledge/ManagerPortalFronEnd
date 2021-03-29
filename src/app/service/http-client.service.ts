@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class Employee{
   constructor(
@@ -10,8 +10,7 @@ export class Employee{
     public address:string,
     public dob: string,
     public mobile:string,
-    public city:string,
-    public role:string
+    public city:string
   ) {}
 }
 
@@ -22,22 +21,32 @@ export class HttpClientService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getEmployees()
-  {
-    console.log("test call");
+  public login(username:string, password:string){
+    const headers = new HttpHeaders({Authentication : 'Basic '+btoa(username+":"+password)});
+    return this.httpClient.get('http://localhost:8080/login',{headers, responseType: 'text'});
+  }
+
+  public getUsers(){
+    let username="kmayur7777";
+    let password:"123123123";
+    const headers = new HttpHeaders({Authentication : 'Basic '+btoa(username+":"+password)});
+    return this.httpClient.get('http://localhost:8080/',{headers});
+  }
+
+  public getEmployees() {
     return this.httpClient.get<Employee[]>('http://localhost:8080/employees');
   }
 
   public getEmployee(employee) {
-    return this.httpClient.get<Employee>("http://localhost:8080/employees/employee" + "/"+ employee.empId);
+    return this.httpClient.get<Employee>("http://localhost:8080/employees/employee" + "/"+ employee.id);
   }
 
   public updateEmployee(employee) {
-    return this.httpClient.put<Employee>("http://localhost:8080/employees" + "/"+ employee.empId, {});
+    return this.httpClient.put<Employee>("http://localhost:8080/employees" + "/"+ employee.id, {});
   } 
 
   public deleteEmployee(employee) {
-    return this.httpClient.delete<Employee>("http://localhost:8080/employees" + "/"+ employee.empId);
+    return this.httpClient.delete<Employee>("http://localhost:8080/employees" + "/"+ employee.id);
   }
 
   public createEmployee(employee) {
