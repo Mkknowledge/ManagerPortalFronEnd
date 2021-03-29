@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, Employee } from './../service/http-client.service';
 import { FormBuilder, Validators } from "@angular/forms";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-add-employee',
@@ -34,7 +35,9 @@ export class AddEmployeeComponent implements OnInit {
   createEmployee(): void {
     this.httpClientService.createEmployee(this.user)
         .subscribe( data => {
-          alert("Employee created successfully.");
+          Swal.fire({
+            text:'Employee created successfully.',
+            confirmButtonText: 'OK'})
         });
 
   };
