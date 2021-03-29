@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class Employee{
   constructor(
-    public empId:string,
+    public empId:number,
     public firstname:string,
     public lastname:string,
     public email:string,
@@ -29,7 +29,7 @@ export class HttpClientService {
   }
 
   public getEmployee(employee) {
-    return this.httpClient.get<Employee>("http://localhost:8080/employees" + "/"+ employee.empId);
+    return this.httpClient.get<Employee>("http://localhost:8080/employees/employee" + "/"+ employee.empId);
   }
 
   public updateEmployee(employee) {

@@ -42,14 +42,15 @@ export class UpdateEmployeeComponent implements OnInit {
       city: ['', Validators.required],
       role: ['', Validators.required]
     });
-    this.httpClientService.getEmployee(+userId)
+     this.httpClientService.getEmployee(+userId)
       .subscribe( data => {
+        alert(data);
         this.editForm.setValue(data);
       });
 
 }
 
-electRole = this.fb.group({
+selectRole = this.fb.group({
   role: ['']
 })
 
