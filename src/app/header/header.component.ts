@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService, Employee } from './../service/http-client.service';
 import { Router } from '@angular/router';
+import {NgbModal, ModalDismissReasons} 
+      from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-header',
@@ -7,8 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  private myModal;
+  closeResult = '';
 
-  constructor(private router: Router) { }
+  user: Employee = new Employee(Number(),"","","","","","","");
+
+  constructor(private httpClientService:HttpClientService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +25,38 @@ export class HeaderComponent implements OnInit {
     const navigationDetails: string[] = ['/addemployee'];
     this.router.navigate(navigationDetails);
   }
+
+  
+  open(content) {
+    this.modalService.open(content,
+   {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = 
+         `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  createEmployee(): void {
+    this.httpClientService.createEmployee(this.user)
+        .subscribe( data => {
+          Swal.fire({
+            text:'Employee created successfully.',
+            confirmButtonText: 'OK'})
+
+            this.router.navigate(['/viewemployee']);   
+        });
+
+  };
 
 }
