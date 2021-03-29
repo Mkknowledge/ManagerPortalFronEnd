@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, Employee } from './../service/http-client.service';
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-add-employee',
@@ -8,12 +9,27 @@ import { HttpClientService, Employee } from './../service/http-client.service';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  user: Employee = new Employee("","","","","","","");
+  user: Employee = new Employee("","","","","","","","","");
 
-  constructor(private httpClientService:HttpClientService) { }
+  role = [
+    { id: 1, name: 'Manager' },
+    { id: 2, name: 'Employee' }
+ ];
+
+ selectedRole: number = 0;
+
+  constructor(private httpClientService:HttpClientService, public fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
+
+  selectRole = this.fb.group({
+    role: ['']
+  })
+
+  onChangeRole(roleId: number) {
+   this.selectedRole = roleId;
+}
 
   createEmployee(): void {
     this.httpClientService.createEmployee(this.user)

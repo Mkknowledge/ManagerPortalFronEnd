@@ -6,10 +6,12 @@ export class Employee{
     public empId:string,
     public firstname:string,
     public lastname:string,
+    public email:string,
     public address:string,
     public dob: string,
     public mobile:string,
-    public city:string
+    public city:string,
+    public role:string
   ) {}
 }
 
