@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} 
       from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2'
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   user: Employee = new Employee(Number(),"","","","","","","");
 
-  constructor(private httpClientService:HttpClientService, private router: Router, private modalService: NgbModal) { }
+  constructor(public loginService:AuthenticationService, private httpClientService:HttpClientService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +36,10 @@ export class HeaderComponent implements OnInit {
       this.closeResult = 
          `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  logoutfn(){
+    this.router.navigate(["/logout"]);
   }
   
   private getDismissReason(reason: any): string {

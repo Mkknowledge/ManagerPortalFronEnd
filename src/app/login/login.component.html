@@ -1,21 +1,12 @@
-<div class="background-wrap">
-    <div class="background"></div>
+<div class="container">
+  <div>
+    User Name : <input type="text" name="username" [(ngModel)]="username">
+    Password : <input type="password" name="password" [(ngModel)]="password">
   </div>
- 
-  <form id="accesspanel" action="">
-    <h1 id="litheader">Manager Portal</h1>
-    <div class="inset">
-      <p>
-        <input type="text" name="username" [(ngModel)]="username" id="email" placeholder="username">
-      </p>
-      <p>
-        <input type="password" name="password" [(ngModel)]="password" id="password" placeholder="password">
-      </p>
-    </div>
-    <p class="p-container">
-      <input type="submit" name="Login" id="go" value="Login" (click)="doLogin()">
-    </p>
-  </form>
+  <button (click)=checkLogin() class="btn btn-success">
+    Login
+  </button>
+</div>
   <p style="width: 250px;text-align: center;margin:auto;margin-top: 37%;">Dont have an account!</p>
   <p class="" style="width: 250px;text-align: center;margin:auto;margin-top: 1%;">
   <input type="submit" name="signup" id="go" value="Sign Up" (click)="signup()">

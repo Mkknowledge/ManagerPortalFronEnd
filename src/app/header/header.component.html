@@ -1,95 +1,100 @@
 <header>
-    <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
-    <div><a href="http://localhost:4200/viewemployee" class="navbar-brand">Manager Portal</a></div>
+  <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
+  <div><a href="http://localhost:4200/viewemployee" class="navbar-brand">Manager Portal</a></div>
+  
+  <ul class="navbar-nav">
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/viewemployee" class="nav-link">View Employees</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()"  routerLink="/stripe" class="nav-link">Subscription</a></li>
+    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
     
-    <ul class="navbar-nav">
-      <li><a  routerLink="/viewemployee" class="nav-link">View Employees</a></li>
-      <li><a  routerLink="/stripe" class="nav-link">Subscription</a></li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <button class="btn btn-success" (click)="open(content)"> Add New Employee</button>
-        <!-- <a  routerLink="/addemployee" class="nav-link" >Add New Employee</a> -->
-      </li>
   </ul>
-    </nav>
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <button *ngIf="loginService.isUserLoggedIn()" class="btn btn-success" (click)="open(content)"> Add New Employee</button>
+    </li>
+    <li style="padding-left: 20px;"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+
+</ul>
+  </nav>
+  
+  </header>
+
+  
+
+
+
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" 
+            id="modal-basic-title">
+            Add Employee
+        </h4>
+        <button type="button" class="close"
+                aria-label="Close" (click)=
+                "modal.dismiss('Cross click')">
+  
+            <span aria-hidden="true">
+                ×
+            </span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <!-- <div class="form-group">
+            <label for="empId">Employee Id</label>
+            <input [(ngModel)]="user.empId" placeholder="Employee Id" name="Employee Id" class="form-control" id="employeeid">
+        </div> -->
     
-    </header>
-
-
-
-
-
-    <ng-template #content let-modal>
-      <div class="modal-header">
-          <h4 class="modal-title" 
-              id="modal-basic-title">
-              Add Employee
-          </h4>
-          <button type="button" class="close"
-                  aria-label="Close" (click)=
-                  "modal.dismiss('Cross click')">
+          <div class="form-group">
+            <label for="name">firstname:</label>
+            <input type="name" [(ngModel)]="user.firstname" placeholder="firstname" name="firstname" class="form-control" id="firstname">
+          </div>
     
-              <span aria-hidden="true">
-                  ×
-              </span>
-          </button>
-      </div>
-      <div class="modal-body">
-        <form>
+          <div class="form-group">
+            <label for="name">lastname:</label>
+            <input type="name" [(ngModel)]="user.lastname" placeholder="lastname" name="lastname" class="form-control" id="lastname">
+          </div>
+    
+          <div class="form-group">
+            <label for="name">email:</label>
+            <input type="name" [(ngModel)]="user.email" placeholder="email" name="email" class="form-control" id="email">
+          </div>
+    
+          <div class="form-group">
+            <label for="name">address:</label>
+            <input type="name" [(ngModel)]="user.address" placeholder="address" name="address" class="form-control" id="address">
+          </div>
+    
+          <div class="form-group">
+            <label for="name">Date Of Birth:</label>
+            <input [(ngModel)]="user.dob" name="dob" type="date" id="dob" required />
+          </div>
+    
+          <div class="form-group">
+            <label for="name">mobile:</label>
+            <input type="name" [(ngModel)]="user.mobile" placeholder="mobile" name="mobile" class="form-control" id="mobile">
+          </div>
+    
+          <div class="form-group">
+            <label for="city">city:</label>
+            <input [(ngModel)]="user.city" placeholder="city" name="city" class="form-control" id="city">
+          </div>
+    
           <!-- <div class="form-group">
-              <label for="empId">Employee Id</label>
-              <input [(ngModel)]="user.empId" placeholder="Employee Id" name="Employee Id" class="form-control" id="employeeid">
+            <label for="role">Role:</label>
+            <select *ngIf="role" [value]="selectedRole" (change)="onChangeRole($event.target.value)" formControlName="role" id="role">
+              <option [value]="0" disabled>Select Role</option>
+              <option *ngFor="let r1 of role" [value]="r1.id">{{r1.name}}</option>
+           </select>
           </div> -->
-      
-            <div class="form-group">
-              <label for="name">firstname:</label>
-              <input type="name" [(ngModel)]="user.firstname" placeholder="firstname" name="firstname" class="form-control" id="firstname">
-            </div>
-      
-            <div class="form-group">
-              <label for="name">lastname:</label>
-              <input type="name" [(ngModel)]="user.lastname" placeholder="lastname" name="lastname" class="form-control" id="lastname">
-            </div>
-      
-            <div class="form-group">
-              <label for="name">email:</label>
-              <input type="name" [(ngModel)]="user.email" placeholder="email" name="email" class="form-control" id="email">
-            </div>
-      
-            <div class="form-group">
-              <label for="name">address:</label>
-              <input type="name" [(ngModel)]="user.address" placeholder="address" name="address" class="form-control" id="address">
-            </div>
-      
-            <div class="form-group">
-              <label for="name">Date Of Birth:</label>
-              <input [(ngModel)]="user.dob" name="dob" type="date" id="dob" required />
-            </div>
-      
-            <div class="form-group">
-              <label for="name">mobile:</label>
-              <input type="name" [(ngModel)]="user.mobile" placeholder="mobile" name="mobile" class="form-control" id="mobile">
-            </div>
-      
-            <div class="form-group">
-              <label for="city">city:</label>
-              <input [(ngModel)]="user.city" placeholder="city" name="city" class="form-control" id="city">
-            </div>
-      
-            <!-- <div class="form-group">
-              <label for="role">Role:</label>
-              <select *ngIf="role" [value]="selectedRole" (change)="onChangeRole($event.target.value)" formControlName="role" id="role">
-                <option [value]="0" disabled>Select Role</option>
-                <option *ngFor="let r1 of role" [value]="r1.id">{{r1.name}}</option>
-             </select>
-            </div> -->
-      
-            
-          </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-success" (click)="modal.close(createEmployee())">Create</button>
-      </div>
-  </ng-template>
+    
+          
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="modal.close(createEmployee())">Create</button>
+    </div>
+</ng-template>

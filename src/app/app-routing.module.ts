@@ -7,19 +7,22 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGaurdService } from './service/auth-gaurd.service';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
 const routes: Routes = [
 
   {path: '', redirectTo: 'login',pathMatch:'full'},
-  {path: 'viewemployee', component: EmployeeComponent},
-  {path: 'addemployee', component: AddEmployeeComponent},
-  {path: 'updateemployee', component: UpdateEmployeeComponent},
+  {path: 'viewemployee', component: EmployeeComponent,canActivate:[AuthGaurdService]},
+  {path: 'addemployee', component: AddEmployeeComponent,canActivate:[AuthGaurdService]},
+  {path: 'updateemployee', component: UpdateEmployeeComponent,canActivate:[AuthGaurdService]},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: "stripe", component: StripeComponent}
+  {path: 'home', component: HomeComponent,canActivate:[AuthGaurdService]},
+  {path: 'signup', component: SignupComponent,canActivate:[AuthGaurdService]},
+  {path: "stripe", component: StripeComponent,canActivate:[AuthGaurdService]},
+  {path: "logout", component: LogoutComponent,canActivate:[AuthGaurdService]}
 
 ];
 

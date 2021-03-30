@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClientService } from '../service/http-client.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +9,24 @@ import { HttpClientService } from '../service/http-client.service';
 })
 export class LoginComponent implements OnInit {
 
-  username:string;
-  password:string;
-  message:any
+  username = 'javainuse'
+  password = 'password'
+  invalidLogin = false
 
 
-  constructor(private service: HttpClientService, private router:Router) { }
+  constructor(private router: Router,
+    private loginservice: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
-  // doLogin() {
-  //   let resp = this.service.login(this.username,this.password);
-  //   alert(resp);
-  //   resp.subscribe(data=>{
-  //     this.router.navigate(["/viewemployee"]);
-  //   })
-  // }
-
-  
-  doLogin() {
- 
-      this.router.navigate(["/viewemployee"]);
+  checkLogin() {
+    if (this.loginservice.authenticate(this.username, this.password)
+    ) {
+      this.router.navigate(['/viewemployee'])
+      this.invalidLogin = false
+    } else
+      this.invalidLogin = true
   }
 
   signup() {
