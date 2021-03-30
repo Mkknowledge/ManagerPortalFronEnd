@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
+import { StripeComponent } from './stripe/stripe.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SignupComponent } from './signup/signup.component';
     UpdateEmployeeComponent,
     LoginComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    StripeComponent
   ],
   imports: [
     BrowserModule,

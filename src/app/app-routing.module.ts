@@ -1,3 +1,4 @@
+import { StripeComponent } from './stripe/stripe.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 
 
+
 const routes: Routes = [
 
   {path: '', redirectTo: 'login',pathMatch:'full'},
@@ -16,7 +18,8 @@ const routes: Routes = [
   {path: 'updateemployee', component: UpdateEmployeeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'signup', component: SignupComponent}
+  {path: 'signup', component: SignupComponent},
+  {path: "stripe", component: StripeComponent}
 
 ];
 
