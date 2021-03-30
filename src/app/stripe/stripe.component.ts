@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService } from './../service/http-client.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stripe',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StripeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpClientService:HttpClientService) { }
 
   loadStripe() {
      
@@ -25,9 +27,19 @@ export class StripeComponent implements OnInit {
   }
 
   pay(amount) {    
- 
+    let token:any;
+    let subscriptionType;
+    if(amount < 649){
+      subscriptionType = "BASIC";
+    } else if(amount < 799){
+      subscriptionType = "STANDARD";
+    } else {
+      subscriptionType = "PREMIUM";
+    }
+
+
     var handler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+      key: 'pk_test_51IaUAYSIYukUv1v2JQQFZE3R4yi4Gq7yX7djVz5PGZZ7972Bj1mveMwrUdcESLHdjmUsnVK4afRnaLC1zJPaLxwY00SuQcLe27',
       locale: 'auto',
       token: function (token: any) {
         console.log(token)
@@ -36,14 +48,19 @@ export class StripeComponent implements OnInit {
     });
  
     handler.open({
-      name: 'Demo Site',
-      description: '2 widgets',
+      name: 'Enter Details',
+      description: 'Subscription Payment',
       amount: amount * 100
     });
+
+    const headers = new Headers({'token': token, 'amount': amount, 'subscriptionType': subscriptionType});
  
+    this.httpClientService.storeSubscription(headers).subscribe( data => {
+      Swal.fire({
+        text:'Successfully Subscribed.',
+        confirmButtonText: 'OK'})
+    });
 }
-
-
 
 
 

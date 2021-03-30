@@ -69,4 +69,9 @@ export class HttpClientService {
   public createEmployee(employee) {
     return this.httpClient.post<Employee>("http://localhost:8080/employees", employee);
   }
+
+  public storeSubscription(headers) {
+    return this.httpClient.post('http://localhost:8080/payment/charge', {headers});
+  }
+
 }
