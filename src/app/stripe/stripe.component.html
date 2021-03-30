@@ -1,14 +1,71 @@
-<div class="container mt-5">
-    <h2>Stripe Checkout</h2>
-    <div class="row mt-5">
-      <div class="col-md-4">
-        <button (click)="pay(20)" class="btn btn-primary btn-block">Pay $20</button>
-      </div>
-      <div class="col-md-4">
-        <button (click)="pay(30)" class="btn btn-success btn-block">Pay $30</button>
-      </div>
-      <div class="col-md-4">
-        <button (click)="pay(50)" class="btn btn-info btn-block">Pay $50</button>
-      </div>    
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row row-flex">
+
+
+        <div style="margin-left: 10%;" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="price-table pt-bg-green">
+                <div>
+                    <span>Basic</span>
+                    <span>Price ₹499/mo</span>
+                    <span>Features included!</span>
+                </div>
+                <ul>
+                    <li>HQ available</li>
+                    <li>Social Media Integration</li>
+                    <li>First Month Hosting</li>
+                    <li>-</li>
+                    <li>-</li>
+                </ul>
+                <button (click)="pay(20)" style="width: 50%; margin-left: 25%; margin-top: 4%;"  class="btn btn-primary btn-block">Pay ₹499</button>
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="price-table pt-bg-red">
+                <div>
+                    <span>Standard</span>
+                    <span>Price ₹649/mo</span>
+                    <span>Features included!</span>
+                </div>
+                <ul>
+                    <li>HD available</li>
+                    <li>Social Media Integration</li>
+                    <li>First Month Hosting</li>
+                    <li>On Page SEO</li>
+                    <li>-</li>
+                </ul>
+                <button (click)="pay(30)" style="width: 50%; margin-left: 25%; margin-top: 4%;"  class="btn btn-primary btn-block">Pay ₹649</button>
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="price-table pt-bg-blue">
+                <div>
+                    <span>Premium</span>
+                    <span>Price ₹799/mo</span>
+                    <span>Features included!</span>
+                </div>
+                <ul>
+                    <li>Ultra HD available</li>
+                    <li>Social Media Integration</li>
+                    <li>First Month Hosting</li>
+                    <li>On Page SEO</li>
+                    <li>24/6 Support</li>
+                </ul>
+                <button (click)="pay(799)" style="width: 50%; margin-left: 25%; margin-top: 4%;"  class="btn btn-primary btn-block">Pay ₹799</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
