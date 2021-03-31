@@ -70,7 +70,12 @@
     
           <div class="form-group">
             <label for="name">Date Of Birth:</label>
-            <input [(ngModel)]="user.dob" name="dob" type="date" id="dob" required />
+            <input style="margin-left: 20px;" [(ngModel)]="user.dob" name="dob" type="date" id="dob" required />
+            <!-- <mat-form-field>
+              <input [(ngModel)]="user.dob" name="dob" matInput [matDatepicker]="picker" placeholder="Choose a date" id="dob" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
           </div>
     
           <div class="form-group">

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, Employee } from './../service/http-client.service';
 import { Router } from '@angular/router';
-import {NgbModal, ModalDismissReasons} 
-      from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2'
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 import { AuthenticationService } from '../service/authentication.service';
+
 
 @Component({
   selector: 'app-header',

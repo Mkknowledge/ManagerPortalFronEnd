@@ -58,8 +58,8 @@ export class HttpClientService {
     return this.httpClient.get<Employee>("http://localhost:8080/employees/employee" + "/"+ employee.id);
   }
 
-  public updateEmployee(employee) {
-    return this.httpClient.put<Employee>("http://localhost:8080/employees" + "/"+ employee.id, {});
+  public updateEmployee(employeeid) {
+    return this.httpClient.put<Employee>("http://localhost:8080/employees" + "/"+ employeeid, {});
   } 
 
   public deleteEmployee(employee) {
