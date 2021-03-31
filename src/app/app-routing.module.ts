@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'updateemployee', component: UpdateEmployeeComponent,canActivate:[AuthGaurdService]},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent,canActivate:[AuthGaurdService]},
-  {path: 'signup', component: SignupComponent,canActivate:[AuthGaurdService]},
+  {path: 'signup', component: SignupComponent},
   {path: "stripe", component: StripeComponent,canActivate:[AuthGaurdService]},
   {path: "logout", component: LogoutComponent,canActivate:[AuthGaurdService]}
 
