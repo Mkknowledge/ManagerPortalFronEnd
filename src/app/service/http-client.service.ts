@@ -18,8 +18,8 @@ export class Manager{
   constructor(
     public email:string,
     public username:string,
-    public firstname:string,
-    public lastname:string,
+    public firstName:string,
+    public lastName:string,
     public password:string,
     public address:string,
     public dob: string,
