@@ -14,11 +14,6 @@ export class UpdateEmployeeComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
 
-  role = [
-    { id: 1, name: 'Manager' },
-    { id: 2, name: 'Employee' }
- ];
-
  selectedRole: number = 0;
 
   constructor(private httpClientService:HttpClientService,private router: Router, public fb: FormBuilder) { }
@@ -39,8 +34,7 @@ export class UpdateEmployeeComponent implements OnInit {
       address: ['', Validators.required],
       dob: ['', Validators.required],
       mobile: ['', Validators.required],
-      city: ['', Validators.required],
-      role: ['', Validators.required]
+      city: ['', Validators.required]
     });
      this.httpClientService.getEmployee(+userId)
       .subscribe( data => {
@@ -50,14 +44,6 @@ export class UpdateEmployeeComponent implements OnInit {
 
 }
 
-selectRole = this.fb.group({
-  role: ['']
-})
-
-onChangeRole(roleId: number) {
- this.selectedRole = roleId;
-}
-
 updateEmployee(employee: Employee): void {
   this.httpClientService.updateEmployee(employee)
   .subscribe(  response => {
@@ -65,5 +51,23 @@ updateEmployee(employee: Employee): void {
     this.submitted = true;
   })
 };
+
+// private updateUser(id) {
+//   this.httpClientService.updateEmployee(this.id)
+//       .pipe(first())
+//       .subscribe({
+//           next: () => {
+//             Swal.fire({
+//               text:'Employee Updated successfully.',
+//               confirmButtonText: 'OK'})
+//               this.router.navigate(['../../'], { relativeTo: this.route });
+//           },
+//           error: error => {
+//             Swal.fire({
+//               text:'Employee Failed to Updated.',
+//               confirmButtonText: 'OK'})
+//           }
+//       });
+// }
 
 }

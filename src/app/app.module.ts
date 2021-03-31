@@ -1,10 +1,11 @@
+import { BasicAuthHttpInterceptorService } from './service/basic-auth-http-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +18,7 @@ import { SignupComponent } from './signup/signup.component';
 import { StripeComponent } from './stripe/stripe.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
+    {
+    provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true
+    } 
   ],
   bootstrap: [AppComponent]
 })

@@ -25,7 +25,9 @@ export class StripeComponent implements OnInit {
   ngOnInit(): void{
     this.loadStripe();
   }
+   headers;
 
+   
   pay(amount) {    
     let token:any;
     let subscriptionType;
@@ -37,13 +39,24 @@ export class StripeComponent implements OnInit {
       subscriptionType = "PREMIUM";
     }
 
+    let emailID;
+    
 
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51IaUAYSIYukUv1v2JQQFZE3R4yi4Gq7yX7djVz5PGZZ7972Bj1mveMwrUdcESLHdjmUsnVK4afRnaLC1zJPaLxwY00SuQcLe27',
       locale: 'auto',
       token: function (token: any) {
-        console.log(token)
-        alert('Token Created!!');
+        emailID = token.email;
+        console.log(emailID)
+        //alert('Token Created!!');
+        const headers = new Headers({'token': token, 'amount': amount, 'subscriptionType': subscriptionType, 'email': emailID});
+    
+       return this.httpClientService.storeSubscription(headers).subscribe( data => {
+          Swal.fire({
+            text:'Successfully Subscribed.',
+            confirmButtonText: 'OK'})
+        });
+        
       }
     });
  
@@ -53,15 +66,20 @@ export class StripeComponent implements OnInit {
       amount: amount * 100
     });
 
-    const headers = new Headers({'token': token, 'amount': amount, 'subscriptionType': subscriptionType});
- 
-    this.httpClientService.storeSubscription(headers).subscribe( data => {
-      Swal.fire({
-        text:'Successfully Subscribed.',
-        confirmButtonText: 'OK'})
-    });
+
+}
+
+storeInfo(headers){
+  this.httpClientService.storeSubscription(headers).subscribe( data => {
+  Swal.fire({
+    text:'Successfully Subscribed.',
+    confirmButtonText: 'OK'})
+});
+
 }
 
 
 
 }
+
+

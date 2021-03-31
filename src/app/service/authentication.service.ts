@@ -11,9 +11,10 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
   
   authenticate(username, password) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-
-    return this.httpClient.get<Manager>('http://localhost:8080/secure/manager/validateLogin', { headers }).pipe(
+    console.log("inside auth");
+    // const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+    const headers = new HttpHeaders({'username': username, 'password': password });
+    return this.httpClient.get('http://localhost:8080/secure/manager/validateLogin', { headers }).pipe(
       map(
         userData => {
           sessionStorage.setItem('username', username);

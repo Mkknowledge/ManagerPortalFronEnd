@@ -71,6 +71,7 @@ export class HttpClientService {
   }
 
   public storeSubscription(headers) {
+    console.log("in storeSubscription");
     return this.httpClient.post('http://localhost:8080/payment/charge', {headers});
   }
 
